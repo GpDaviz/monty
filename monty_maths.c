@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * _subs - sub top of stack y second top stack
+ * _sub - sub top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _subs(stack_t **stack, unsigned int line_number)
+void _sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	int subs = 0, i = 0;
+	int sub = 0, i = 0;
 
 	if (tmp == NULL)
 	{
@@ -27,18 +27,18 @@ void _subs(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	subs = (*stack)->next->n - (*stack)->n;
+	sub = (*stack)->next->n - (*stack)->n;
 	_pop(stack, line_number);
 
-	(*stack)->n = subs;
+	(*stack)->n = sub;
 }
 
 /**
- * _muls - mul top of stack y second top stack
+ * _mul - mul top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _muls(stack_t **stack, unsigned int line_number)
+void _mul(stack_t **stack, unsigned int line_number)
 {
 	int aux;
 
@@ -59,13 +59,13 @@ void _muls(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _divs - divs top of stack y second top stack
+ * _div - div top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _divs(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
-	int divs = 0;
+	int div = 0;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -85,24 +85,24 @@ void _divs(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		divs = (*stack)->n;
+		div = (*stack)->n;
 		_pop(stack, line_number);
 		(*stack)->n /= div;
 	}
 }
 
 /**
- * _mods - mods top of stack y second top stack
+ * _mod - mod top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
-void _mods(stack_t **stack, unsigned int line_number)
+void _mod(stack_t **stack, unsigned int line_number)
 {
-	int mods = 0;
+	int mod = 0;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't mods, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		free(var_global.buffer);
 		fclose(var_global.file);
 		free_dlistint(*stack);
@@ -118,8 +118,8 @@ void _mods(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		mods = (*stack)->n;
+		mod = (*stack)->n;
 		_pop(stack, line_number);
-		(*stack)->n %= mods;
+		(*stack)->n %= mod;
 	}
 }
