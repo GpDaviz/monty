@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * myread_file - reads a bytecode file and runs commands
+ * read_file - reads a bytecode file and runs commands
  * @filename: pathname to file
  * @stack: pointer to the top of the stack
  */
-void myread_file(char *filename, stack_t **stack)
+void read_file(char *filename, stack_t **stack)
 {
 	char *line;
 	size_t i = 0;
@@ -46,11 +46,11 @@ void myread_file(char *filename, stack_t **stack)
 }
 
 /**
- * get_op_functions -  checks opcode and returns the correct function
+ * get_op_func -  checks opcode and returns the correct function
  * @str: the opcode
  * Return: returns a functions, or NULL on failure
  */
-instruct_func get_op_function(char *str)
+instruct_func get_op_func(char *str)
 {
 	int i;
 
@@ -109,13 +109,13 @@ int isnumber(char *str)
 }
 
 /**
- * myparse_line - parses a line for an opcode and arguments
+ * parse_line - parses a line for an opcode and arguments
  * @line: the line to be parsed
  * @stack: pointer to the head of the stack
  * @line_number: the current line number
  * Return: returns the opcode or null on failure
  */
-char *myparse_line(char *line, stack_t **stack, unsigned int line_number)
+char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *op_code, *push, *arg;
 	(void)stack;
